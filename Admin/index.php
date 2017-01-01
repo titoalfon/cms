@@ -54,7 +54,7 @@ if(!isset($_SESSION['username'])) {
 		<!--<div class="container">-->
 			
 			<h1>Area de administración</h1>
-			
+			<p>Hecho para git</p>
 			<div class="row">
 				<div class="col-md-3">
 					<div class="list-group">
