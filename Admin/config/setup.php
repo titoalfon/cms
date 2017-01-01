@@ -17,6 +17,13 @@ $db = "atomcms";
 $dbc = mysqli_connect($host, $user, $pass, $db) or die("Error, could not connect due to: " . mysqli_connect_error());
 
 //Query para recuperar páginas
+include('queries.php');
+if(isset($_GET['id'])){
+
+	$pagina = retrieve_page($dbc, $_GET['id']);
+
+}
+
 $pageid = isset($_GET['page'])? $_GET['page'] : 1;//si la variable page no existe le asignamos uno por defecto 
 $page = retrieve_page($dbc, $pageid);
 //Recuperar usuarios

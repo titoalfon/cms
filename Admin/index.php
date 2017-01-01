@@ -20,41 +20,18 @@ if(!isset($_SESSION['username'])) {
 			include_once 'config/css.php';
 			include_once 'config/js.php';
 			
-			if(isset($_GET['id'])){
 	
-				$pagina = retrieve_page($dbc, $_GET['id']);
-	
-			}	
 		?>
 			
 	</head>
 	
 	<body>
 		<?php include_once NAVIGATION; ?>
-		<?php 
-						if(isset($_POST['submitted']) && $_POST['submitted'] == 1){
-							$header = mysqli_real_escape_string($dbc, $_POST['header']);
-							$title = mysqli_real_escape_string($dbc, $_POST['title']);
-							$label= mysqli_real_escape_string($dbc, $_POST['label']);
-							$user= mysqli_real_escape_string($dbc, $_POST['user']);
-							$body= mysqli_real_escape_string($dbc, $_POST['body']);
-							$slug= mysqli_real_escape_string($dbc, $_POST['slug']);
-							
-							$query = "INSERT INTO pages (header, title, label, user_id, body, slug) VALUES('$header', '$title', '$label', '$user', '$body', '$slug');";
-							$r = mysqli_query($dbc, $query);
-							if($r) {
-								$message = "<p>Query realizado con ÉXITO</p>";
-							}else{
-								$message = "<p>Error en el query por:" . mysqli_error($dbc) . "</p>";
-								$message .= "<p>" . $query . "</p>";
-							}
-						}
-					?>
+		
 				
 		<!--<div class="container">-->
 			
 			<h1>Area de administración</h1>
-			<p>Hecho para git</p>
 			<div class="row">
 				<div class="col-md-3">
 					<div class="list-group">
@@ -67,7 +44,7 @@ if(!isset($_SESSION['username'])) {
 					while($pages = mysqli_fetch_assoc($all_pages)) { 
 							$blurb = substr(strip_tags($pages['body']), 0, 100);
 							?>
-							<a href="index.php?id=<?php echo $pages['id'];?>" class="list-group-item">
+							<a href="index.php?id=<?php echo $pages['id'];?>" class="list-group-item <?php if($pages['id']==$pagina['id']) echo 'active';?>">
 							<h4 class="list-group-item-heading"><?php echo $pages['title'];?></h4>
 							<p class="list-group-item-text"><?php echo $blurb;?></p>
 							</a>
@@ -79,7 +56,7 @@ if(!isset($_SESSION['username'])) {
 				</div>
 				<div class="col-md-9">
 					
-					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<form method="post" action="index.php?id=<?php if(isset($pagina)) echo $pagina['id'];?>">
 						
 							  
 					  		  <div class="form-group">
@@ -145,6 +122,7 @@ if(!isset($_SESSION['username'])) {
 						
 							  <button type="submit" name='save' class="btn btn-default">Save</button>
 							  <input type="hidden" name="submitted" value="1">
+							  <input type="hidden" name="id" value="<?php if(isset($pagina)) echo $pagina['id'];?>">
 							</form>
 							<div><?php if(isset($message)) echo $message;?></div>
 				</div><!-- End of md-8 -->
