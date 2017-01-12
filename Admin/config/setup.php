@@ -2,6 +2,7 @@
 require_once '../config/connection.php';
 include_once 'functions/data.php';
 include_once 'functions/template.php';
+include_once 'functions/sandbox.php';
 //Setup file:
 #Constants
 define("TEMPLATE", "template");
