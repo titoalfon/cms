@@ -96,13 +96,10 @@ if(!isset($_SESSION['username'])) {
 									    	 	?> 
 									    	<option value="<?php if(isset($pagina)){ echo $usuario['id'];} else {echo $logged['id'] ;}?>"
 									    		    <?php if(isset($pagina)){ selected($usuario['id'], $pagina['user_id'], 'selected');}
-																	else {echo $logged['full_name'];}
+																	else {selected($usuario['id'],$logged['id'],'selected');}
+                                                             
 									    		?>>
-									    	<?php  if(isset($pagina)){ echo $usuario['full_name'];}
-                                                   else {
-                                                   			echo $logged['full_name'];
-                                                        } 
-									    	 ?></option>
+									    	<?php echo $usuario['full_name'];?></option>
 									    	<?php } ?>
 									    </select>
 								  </div> 
