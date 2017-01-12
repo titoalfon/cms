@@ -44,7 +44,7 @@ if(!isset($_SESSION['username'])) {
 					while($pages = mysqli_fetch_assoc($all_pages)) { 
 							$blurb = substr(strip_tags($pages['body']), 0, 100);
 							?>
-							<a href="index.php?id=<?php echo $pages['id'];?>" class="list-group-item <?php if($pages['id']==$pagina['id']) echo 'active';?>">
+							<a href="index.php?id=<?php echo $pages['id'];?>" class="list-group-item <?php selected($pages['id'], $pagina['id'], 'active')?>">
 							<h4 class="list-group-item-heading"><?php echo $pages['title'];?></h4>
 							<p class="list-group-item-text"><?php echo $blurb;?></p>
 							</a>
@@ -95,7 +95,7 @@ if(!isset($_SESSION['username'])) {
 									    	 	$usuario = retrieve_user($dbc, $usuarios_list['id']);
 									    	 	?> 
 									    	<option value="<?php if(isset($pagina)){ echo $usuario['id'];} else {echo $logged['id'] ;}?>"
-									    		    <?php if(isset($pagina)){ echo ($usuario['id']==$pagina['user_id'])? 'selected' : '';}
+									    		    <?php if(isset($pagina)){ selected($usuario['id'], $pagina['user_id'], 'selected');}
 																	else {echo $logged['full_name'];}
 									    		?>>
 									    	<?php  if(isset($pagina)){ echo $usuario['full_name'];}
