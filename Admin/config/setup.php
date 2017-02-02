@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once '../config/connection.php';
 include_once 'functions/data.php';
 include_once 'functions/template.php';
@@ -21,16 +22,14 @@ $dbc = mysqli_connect($host, $user, $pass, $db) or die("Error, could not connect
 include('queries.php');
 if(isset($_GET['id'])){
 
-	$pagina = retrieve_page($dbc, $_GET['id']);
+	$opened = retrieve_page($dbc, $_GET['id']);
 
 }
 
-$pageid = isset($_GET['page'])? $_GET['page'] : 1;//si la variable page no existe le asignamos uno por defecto 
-$page = retrieve_page($dbc, $pageid);
+$page = isset($_GET['page'])? $_GET['page'] : 'dashboard';//si la variable page no existe le asignamos uno por defecto 
+//$pagetittle = retrieve_page($dbc, $pageid);
 //Recuperar usuarios
-	if(!isset($_SESSION['username'])) {
-		$_SESSION['username'] = "";
-	}
+
 
 $user = retrieve_user($dbc, $_SESSION['username']);
 

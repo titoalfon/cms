@@ -1,8 +1,8 @@
 <?php
 
 function retrieve_page($dbc, $pageid) {
-
-	$query = "SELECT * FROM pages WHERE id=$pageid";
+	
+	$query = "SELECT * FROM pages WHERE id = $pageid";
 	$result = mysqli_query($dbc, $query); 
 	if(mysqli_num_rows($result) > 0) {
 		$page = mysqli_fetch_assoc($result);
@@ -59,11 +59,11 @@ function retrieve_all_pages($dbc) {
 	
 }
 
-/*function retrieve_all_users($dbc) {
-	$q = "SELECT id FROM users;";
+function retrieve_all_users($dbc) {
+	$q = "SELECT * FROM users ORDER BY last;";
 	return mysqli_query($dbc, $q);
 	
-}*/
+}
 
 
 

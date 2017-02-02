@@ -52,7 +52,7 @@ if(isset($_SESSION['username'])) {
 						<div class="panel-body">
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 							  <div class="form-group">
-							  		 <label for="nombre">Email address</label>
+							  		 <label for="nombre">User Name</label>
 									    <input type="text" class="form-control" name='nombre' id="nombre" placeholder="Email">
 								  </div> 
 							
