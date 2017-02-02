@@ -1,6 +1,11 @@
 <div id="console-debug">
 	<pre>
 		<pre>
+			<h1>Path Array</h1>
+			<?php print_r($path);?>
+		</pre>
+		
+		<pre>
 			<h1>All Variables</h1>
 			<?php print_r(get_defined_vars());?>
 		</pre>
