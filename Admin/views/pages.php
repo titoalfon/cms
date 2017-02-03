@@ -30,7 +30,7 @@
 			  		  <div class="form-group">
 				  		 <label for="header">Header</label>
 						 <input type="text" class="form-control" name='header' id="header" placeholder="Page header"
-						  value="<?php if(isset($opened))echo $opened['header'];?>">
+						  value="<?php if(isset($_GET['id']))echo $opened['header'];?>">
 					  </div> 
 					  
 					  <div class="form-group">
