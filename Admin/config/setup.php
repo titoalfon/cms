@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 require_once '../config/connection.php';
 include_once 'functions/data.php';
 include_once 'functions/template.php';
@@ -18,15 +18,11 @@ $db = "atomcms";
 #Database connection
 $dbc = mysqli_connect($host, $user, $pass, $db) or die("Error, could not connect due to: " . mysqli_connect_error());
 
-//Query para recuperar páginas
-include('queries.php');
-if(isset($_GET['id'])){
 
-	$opened = retrieve_page($dbc, $_GET['id']);
 
-}
 
 $page = isset($_GET['page'])? $_GET['page'] : 'dashboard';//si la variable page no existe le asignamos uno por defecto 
+include('queries.php');
 //$pagetittle = retrieve_page($dbc, $pageid);
 //Recuperar usuarios
 
