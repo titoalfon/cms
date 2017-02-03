@@ -24,31 +24,31 @@
 		</div>
 		<div class="col-md-9">
 			
-			<form method="post" action="index.php?page=pages&id=<?php if(isset($opened)) echo $opened['id'];?>">
+			<form method="post" action="index.php?page=pages&id=<?php if(isset($opened['id'])) echo $opened['id'];?>">
 				
 					  
 			  		  <div class="form-group">
 				  		 <label for="header">Header</label>
 						 <input type="text" class="form-control" name='header' id="header" placeholder="Page header"
-						  value="<?php if(isset($_GET['id']))echo $opened['header'];?>">
+						  value="<?php if(isset($opened['id'])) echo $opened['header'];?>">
 					  </div> 
 					  
 					  <div class="form-group">
 					    <label for="title">Title</label>
 					    <input type="text" class="form-control" id="title" name="title" placeholder="Page Title"
-					    value="<?php if(isset($opened)) echo $opened['title'];?>">
+					    value="<?php if(isset($opened['id'])) echo $opened['title'];?>">
 					  </div>
 					
 					  <div class="form-group">
 					    <label for="label">Label</label>
 					    <input type="text" class="form-control" id="label" name="label" placeholder="Page Label"
-					    value="<?php if(isset($opened)) echo $opened['label'];?>">
+					    value="<?php if(isset($opened['id'])) echo $opened['label'];?>">
 					  </div>
 					  
 					  <div class="form-group">
 					    <label for="slug">Slug</label>
 					    <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug"
-					    value="<?php if(isset($opened)) echo $opened['slug'];?>">
+					    value="<?php if(isset($opened['id'])) echo $opened['slug'];?>">
 					  </div>
 					  
 					  <div class="form-group">
@@ -62,8 +62,8 @@
 							    	 while($usuarios_list = mysqli_fetch_assoc($r)) {
 							    	 	$usuario = retrieve_user($dbc, $usuarios_list['id']);
 							    	 	?> 
-							    	<option value="<?php if(isset($opened)){ echo $usuario['id'];} else {echo $logged['id'] ;}?>"
-							    		    <?php if(isset($opened)){ selected($usuario['id'], $opened['user_id'], 'selected');}
+							    	<option value="<?php if(isset($opened['id'])){ echo $usuario['id'];} else {echo $logged['id'] ;}?>"
+							    		    <?php if(isset($opened['id'])){ selected($usuario['id'], $opened['user_id'], 'selected');}
 															else {selected($usuario['id'],$logged['id'],'selected');}
                                                      
 							    		?>>
@@ -75,7 +75,7 @@
 						<div class="form-group">
 					  		 <label for="body">Body</label>
 						     <textarea class="form-control editor" rows="8" cols="30" name='body' id="body" placeholder="Page Content">
-						     	<?php if(isset($opened)) echo $opened['body'];?>
+						     	<?php if(isset($opened['id'])) echo $opened['body'];?>
 						     </textarea>
 						  </div> 
 					  
@@ -87,7 +87,9 @@
 				
 					  <button type="submit" name='save' class="btn btn-default">Save</button>
 					  <input type="hidden" name="submitted" value="1">
-					  <input type="hidden" name="id" value="<?php if(isset($opened)) echo $opened['id'];?>">
+					  <?php if(isset($opened['id'])) { ?>
+						<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
+					  <?php } ?>
 					</form>
 					<div><?php if(isset($message)) echo $message;?></div>
 		</div><!-- End of md-8 -->

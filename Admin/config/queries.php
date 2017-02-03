@@ -63,7 +63,6 @@
 					$r = mysqli_query($dbc, $query);
 					if($r) {
 						$message = "<p class=\"bg-success\">User was successfully $action</p>";
-						$_GET['id'] = $_POST['id'];
 						}else{
 						$message = "<p class=\"bg-danger\">Error en el query por: " . mysqli_error($dbc) . "</p>";
 						if($verify == false) {

@@ -26,25 +26,25 @@
 		</div>
 		<div class="col-md-9">
 			
-			<form method="post" action="index.php?page=users&id=<?php if(isset($opened)) echo $opened['id'];?>">
+			<form method="post" action="index.php?page=users&id=<?php echo $opened['id'];?>">
 				
 					  
 					  <div class="form-group">
 					    <label for="first">First Name</label>
 					    <input type="text" class="form-control" id="first" name="first" placeholder="First Name"
-					    value="<?php if(isset($_GET['id'])) echo $opened['first'];?>">
+					    value="<?php if(isset($opened['id']))echo $opened['first'];?>">
 					  </div>
 					
 					  <div class="form-group">
 					    <label for="last">Last Name</label>
 					    <input type="text" class="form-control" id="last" name="last" placeholder="Last Name"
-					    value="<?php if(isset($_GET['id'])) echo $opened['last'];?>">
+					    value="<?php if(isset($opened['id'])) echo $opened['last'];?>">
 					  </div>
 					  
 					  <div class="form-group">
 					    <label for="email">Email</label>
 					    <input type="text" class="form-control" id="email" name="email" placeholder="Email Address"
-					    value="<?php if(isset($_GET['id'])) echo $opened['email'];?>">
+					    value="<?php if(isset($opened['id']))echo $opened['email'];?>">
 					  </div>
 
 					  <div class="form-group">
@@ -76,7 +76,9 @@
 				
 					  <button type="submit" name='save' class="btn btn-default">Save</button>
 					  <input type="hidden" name="submitted" value="1">
-					  <input type="hidden" name="id" value="<?php if(isset($_GET['id'])) echo $opened['id'];?>">
+					  <?php if(isset($opened['id'])) { ?>
+						<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
+					  <?php } ?>
 					</form>
 					<div><?php if(isset($message)) echo $message;?></div>
 		</div><!-- End of md-8 -->

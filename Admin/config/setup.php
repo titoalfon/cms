@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 require_once '../config/connection.php';
 include_once 'functions/data.php';
 include_once 'functions/template.php';
