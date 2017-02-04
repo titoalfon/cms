@@ -25,7 +25,7 @@
 			</div><!-- End of list group -->
 		</div>
 		<div class="col-md-9">
-			
+			<div><p><?php if(isset($message)) echo $message;?></p></div>
 			<form method="post" action="index.php?page=users&id=<?php echo $opened['id'];?>">
 				
 					  
@@ -80,7 +80,7 @@
 						<input type="hidden" name="id" value="<?php echo $opened['id']; ?>">
 					  <?php } ?>
 					</form>
-					<div><?php if(isset($message)) echo $message;?></div>
+					
 		</div><!-- End of md-8 -->
 		
 		

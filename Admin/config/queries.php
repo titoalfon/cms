@@ -23,10 +23,10 @@
 				}
 				$r = mysqli_query($dbc, $query);
 				if($r) {
-					$message = "<p class=\"bg-success\">Page was successfully $action</p>";
+					$message = "<p class=\"alert alert-success\">Page was successfully $action</p>";
 				}else{
-					$message = "<p class=\"bg-danger\">Error en el query por:" . mysqli_error($dbc) . "</p>";
-					$message .= "<p class=\"bg-warning\">" . $query . "</p>";
+					$message = "<p class=\"alert alert-danger\">Error en el query por:" . mysqli_error($dbc) . "</p>";
+					$message .= "<p class=\"alert alert-warning\">" . $query . "</p>";
 				}
 			}
 			if(isset($_GET['id'])){	$opened = retrieve_page($dbc, $_GET['id']);}
@@ -53,22 +53,26 @@
 						$query = "UPDATE users SET first = '$first',
 										 last = '$last',
 										 $password status = $_POST[status] WHERE id = '$_POST[id]';";
+						$r = mysqli_query($dbc, $query);
 						$action = "UPDATED!";
 					} else {
-						if($verify == true) {
+						
 							$query = "INSERT INTO users (first, last, email, password, status) VALUES('$first', '$last', '$email', SHA1('$_POST[password]'), '$_POST[status]');";
-							$action = "ADDED!";
-						}
+							if($verify == true) {
+								$r = mysqli_query($dbc, $query);
+								$action = "ADDED!";
+							}
+						
 					}
-					$r = mysqli_query($dbc, $query);
+					
 					if($r) {
-						$message = "<p class=\"bg-success\">User was successfully $action</p>";
+						$message = "<p class=\"alert alert-success\">User was successfully $action</p>";
 						}else{
-						$message = "<p class=\"bg-danger\">Error en el query por: " . mysqli_error($dbc) . "</p>";
+						$message = "<p class=\"alert alert-danger\">Error en el query por: " . mysqli_error($dbc) . "</p>";
 						if($verify == false) {
-							$message .= "<p class=\"bg-danger\">Password vacío/no coincidente</p>";
+							$message .= "<p class=\"alert alert-danger\">Password vacío/no coincidente</p>";
 						}
-						$message .= "<p class=\"bg-warning\">" . $query . "</p>";
+						$message .= "<p class=\"alert alert-warning\">" . $query . "</p>";
 					}
 				}
 				if(isset($_GET['id'])){	$opened = retrieve_user($dbc, $_GET['id']);}
