@@ -16,6 +16,18 @@
 			$('#console-debug').toggle();
 		});
 		
+		$('.btn-delete').on("click", function() {
+			
+			var selected = $(this).attr('id');
+			var page_id = selected.slice(4);
+			//alert(selected);
+			var confirmed = confirm('¿Estás seguro de que quieres borrar la página?');
+			if (confirmed) {
+				$.get('ajax/pages.php?id='+page_id);
+				$(this).parent().parent().remove();
+			}
+		});
+		
 		tinymce.init({
 		  selector: '.editor',  // change this value according to your HTML
 		  plugins : 'advlist autolink link image lists charmap print preview code'

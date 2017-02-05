@@ -65,6 +65,12 @@ function retrieve_all_users($dbc) {
 	
 }
 
+function retrieve_settings($dbc) {
+	$q = "SELECT * FROM settings ORDER BY id;";
+	return mysqli_query($dbc, $q);
+	
+}
+
 
 
 

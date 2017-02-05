@@ -12,10 +12,14 @@
 			while($list = mysqli_fetch_assoc($all_pages)) { 
 					$blurb = substr(strip_tags($list['body']), 0, 100);
 					?>
-					<a href="index.php?page=pages&id=<?php echo $list['id'];?>" class="list-group-item <?php selected($list['id'], $opened['id'], 'active')?>">
-					<h4 class="list-group-item-heading"><?php echo $list['title'];?></h4>
-					<p class="list-group-item-text"><?php echo $blurb;?></p>
-					</a>
+					<div class="list-group-item <?php selected($list['id'], $opened['id'], 'active')?>">
+						<h4 class="list-group-item-heading"><?php echo $list['title'];?></h4>
+						<span class="pull-right">
+							<a href="#" id="del_<?= $list['id'];?>" class="btn btn-danger btn-delete"><i class="fa fa-trash-o"></i></a>
+							<a href="index.php?page=pages&id=<?php echo $list['id'];?>" class="btn btn-default"><i class="fa fa-chevron-right"></i></a>
+						</span>
+						<p class="list-group-item-text"><?php echo $blurb;?></p>
+					</div>
 						
 				
 		<?php	}
