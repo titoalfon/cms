@@ -14,15 +14,10 @@
 					//$blurb = substr(strip_tags($pages['body']), 0, 100);
 					$list = retrieve_user($dbc, $list['id']);
 					?>
-					<div  id="usuario_<?php echo $list['id'];?>"class="list-group-item <?php selected($list['id'], $opened['id'], 'active')?>">
-					<h4 class="list-group-item-heading"><?php echo $list['fullname_reverse'];?>
-						<span class="pull-right">
-							<a href="#" id="dus_<?php echo $list['id'];?>" class="btn btn-danger btn-deluser"><i class="fa fa-trash-o"></i></a>
-							<a href="index.php?page=users&id=<?php echo $list['id'];?>" class="btn btn-default btn-deluser"><i class="fa fa-chevron-right"></i></a>
-						</span>
-					</h4>
+					<a href="index.php?page=users&id=<?php echo $list['id'];?>" class="list-group-item <?php selected($list['id'], $opened['id'], 'active')?>">
+					<h4 class="list-group-item-heading"><?php echo $list['fullname_reverse'];?></h4>
 					<!-- <p class="list-group-item-text"><?php //echo $blurb;?></p>-->
-					</div>
+					</a>
 						
 				
 		<?php	}

@@ -28,6 +28,17 @@
 			}
 		});
 		
+		$('.btn-deluser').on("click", function() {
+			
+			var selected = $(this).attr('id');
+			var user_id = selected.slice(4);
+			var confirmed = confirm('¿Estás seguro de que quieres borrar este usuario?');
+			if (confirmed) {
+				$.get('ajax/users.php?uid='+user_id);
+				$('#usuario_'+user_id).remove();
+			}
+		});
+		
 		tinymce.init({
 		  selector: '.editor',  // change this value according to your HTML
 		  plugins : 'advlist autolink link image lists charmap print preview code'
